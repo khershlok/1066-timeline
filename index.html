@@ -1,0 +1,143 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>1066 Timeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;0,800;1,400&family=Alegreya+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one vertical timeline split into three phases (before / the day / after), each with its own colour; a sticky bar filters by phase. */
+:root{
+  --bg:#F3F4EF; --panel:#FFFFFF; --ink:#1E272B; --muted:#58625F; --rule:#D5D9CE;
+  --before:#2E5572; --battle:#8E2F3A; --after:#5E7040; --gold:#8A6714;
+  --serif:"Alegreya", Georgia, "Times New Roman", serif;
+  --sans:"Alegreya Sans", "Gill Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161B1D; --panel:#1F2629; --ink:#E7E9E2; --muted:#A9B1AD; --rule:#353E41;
+    --before:#8DB7D6; --battle:#E28B95; --after:#A9BF86; --gold:#E0B85A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161B1D; --panel:#1F2629; --ink:#E7E9E2; --muted:#A9B1AD; --rule:#353E41;
+  --before:#8DB7D6; --battle:#E28B95; --after:#A9BF86; --gold:#E0B85A; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:1.1rem;line-height:1.55;padding-inline:16px}
+.page{max-width:46rem;margin:0 auto;padding-block:2.5rem 4rem}
+h1,h2{text-wrap:balance}
+.eyebrow{font-family:var(--sans);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.85rem;color:var(--battle);margin:0}
+h1{font-size:clamp(2.3rem,6vw,3.3rem);line-height:1.05;font-weight:800;margin:.3rem 0 .7rem}
+.intro{color:var(--muted);margin:.3rem 0}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:1.5rem -16px 0;padding:.7rem 16px;border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.bar button{font-family:var(--sans);font-size:.98rem;font-weight:600;border:1.5px solid var(--rule);background:var(--panel);color:var(--ink);border-radius:999px;padding:.35rem .9rem;cursor:pointer}
+.bar button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.bar button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.bar .key{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin-left:auto}
+.badge{font-family:var(--sans);font-size:.78rem;font-weight:700;color:var(--gold);border:1.5px solid var(--gold);border-radius:4px;padding:0 .35rem;white-space:nowrap}
+
+.phase{margin-top:2.2rem}
+.phase > h2{font-size:1.8rem;margin:0 0 .2rem}
+.phase > p{margin:0 0 1rem;color:var(--muted)}
+.phase.before > h2{color:var(--before)}
+.phase.battle > h2{color:var(--battle)}
+.phase.after > h2{color:var(--after)}
+
+ol.tl{list-style:none;margin:0;padding:0 0 0 1.6rem;position:relative}
+ol.tl::before{content:"";position:absolute;left:.45rem;top:.4rem;bottom:.4rem;width:3px;border-radius:2px;background:var(--line)}
+.before ol.tl{--line:var(--before)}
+.battle ol.tl{--line:var(--battle)}
+.after ol.tl{--line:var(--after)}
+ol.tl li{position:relative;margin:0 0 1.1rem}
+ol.tl li::before{content:"";position:absolute;left:-1.42rem;top:.45rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--line)}
+ol.tl li.big::before{background:var(--line)}
+.when{font-family:var(--sans);font-weight:700;font-size:.95rem;font-variant-numeric:tabular-nums;color:var(--line);display:block}
+.what{font-weight:700}
+.why{display:block;color:var(--muted);font-size:1.02rem;margin-top:.1rem}
+.why strong{color:var(--ink);font-weight:600}
+li.big .what{font-size:1.15rem}
+
+.tip{margin-top:2.5rem;padding:1rem 1.2rem;border:1.5px solid var(--gold);border-radius:6px;background:var(--panel)}
+.tip h2{font-family:var(--sans);font-size:.95rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);margin:0 0 .4rem}
+.tip p{margin:.35rem 0}
+</style>
+
+<div class="page">
+  <p class="eyebrow">GCSE History · Anglo-Saxon and Norman England</p>
+  <h1>1066: before, during and after Hastings</h1>
+  <p class="intro">The big dots are the events you must know. "Not certain" means the sources disagree.</p>
+
+  <div class="bar" role="group" aria-label="Show part of the timeline">
+    <button type="button" id="f-all" data-f="all" aria-pressed="true">All</button>
+    <button type="button" id="f-before" data-f="before" aria-pressed="false">Before</button>
+    <button type="button" id="f-battle" data-f="battle" aria-pressed="false">The battle</button>
+    <button type="button" id="f-after" data-f="after" aria-pressed="false">After</button>
+  </div>
+
+  <section class="phase before" data-p="before">
+    <h2>Before the battle</h2>
+    <p>Three men want the crown: Harold, William and Harald Hardrada.</p>
+    <ol class="tl">
+      <li><span class="when">1064</span><span class="what">Harold promises to help William become king</span> <span class="badge">Not certain</span><span class="why">He swears this in Normandy. Breaking it later gives William an excuse to invade.</span></li>
+      <li class="big"><span class="when">5 Jan 1066</span><span class="what">King Edward the Confessor dies</span><span class="why">He has no children, so there is no obvious heir.</span></li>
+      <li class="big"><span class="when">6 Jan 1066</span><span class="what">Harold is crowned king</span><span class="why">William is furious and starts planning an invasion.</span></li>
+      <li><span class="when">8 Sept 1066</span><span class="what">Harold sends his soldiers home</span><span class="why">They had guarded the south coast all summer, but food ran out.</span></li>
+      <li><span class="when">20 Sept 1066</span><span class="what">Norwegians win the Battle of Fulford</span><span class="why">Harald Hardrada of Norway invades the north and beats Earls Edwin and Morcar.</span></li>
+      <li class="big"><span class="when">25 Sept 1066</span><span class="what">Harold wins the Battle of Stamford Bridge</span><span class="why">He rushes north and kills Hardrada, but his army is now tired.</span></li>
+      <li class="big"><span class="when">28 Sept 1066</span><span class="what">William lands at Pevensey</span><span class="why">Nobody is guarding the coast, so he lands without a fight.</span></li>
+      <li><span class="when">Early Oct 1066</span><span class="what">Harold marches back south</span><span class="why">About 250 miles, with a tired army that isn’t complete.</span></li>
+    </ol>
+  </section>
+
+  <section class="phase battle" data-p="battle">
+    <h2>The battle: 14 October 1066</h2>
+    <p>It lasts all day, on a hill near Hastings.</p>
+    <ol class="tl">
+      <li class="big"><span class="when">Morning</span><span class="what">The English form a shield wall on top of a hill</span><span class="why">The Normans have to attack uphill.</span></li>
+      <li><span class="when">Morning</span><span class="what">Norman attacks fail</span><span class="why">Arrows hit shields, and soldiers and horsemen can’t break the wall.</span></li>
+      <li class="big"><span class="when">Late morning</span><span class="what">Some Normans panic and run</span><span class="why">A rumour says William is dead. He lifts his helmet to show he is alive, and his men fight on.</span></li>
+      <li><span class="when">Afternoon</span><span class="what">Normans pretend to retreat</span> <span class="badge">Not certain</span><span class="why">English soldiers chase them downhill and are killed. The shield wall gets weaker.</span></li>
+      <li class="big"><span class="when">Evening</span><span class="what">Harold is killed</span> <span class="badge">Not certain</span><span class="why">Maybe by an arrow in the eye, maybe by knights. The sources disagree.</span></li>
+      <li><span class="when">Dusk</span><span class="what">The English run away</span><span class="why">William has won the battle.</span></li>
+    </ol>
+  </section>
+
+  <section class="phase after" data-p="after">
+    <h2>After the battle</h2>
+    <p>William wins the crown, then has to keep it.</p>
+    <ol class="tl">
+      <li><span class="when">Oct 1066</span><span class="what">The English choose Edgar Ætheling as king</span><span class="why">He is a teenager and is never crowned.</span></li>
+      <li><span class="when">Oct–Nov 1066</span><span class="what">William takes Dover, Canterbury and Winchester</span><span class="why">He punishes towns that resist and spares those that surrender.</span></li>
+      <li class="big"><span class="when">Dec 1066</span><span class="what">English leaders surrender at Berkhamsted</span><span class="why">William has burned the land around London, so they give up.</span></li>
+      <li class="big"><span class="when">25 Dec 1066</span><span class="what">William is crowned king</span><span class="why">In Westminster Abbey, on Christmas Day.</span></li>
+      <li><span class="when">1067 onwards</span><span class="what">Normans build castles all over England</span><span class="why">Including the Tower of London. Castles help a few Normans control many English.</span></li>
+      <li><span class="when">1068–71</span><span class="what">The English rebel several times</span><span class="why">Including Edwin and Morcar, and Hereward the Wake. All the rebellions fail.</span></li>
+      <li class="big"><span class="when">1069–70</span><span class="what">The Harrying of the North</span><span class="why">William destroys farms and villages in Yorkshire. Thousands starve.</span></li>
+      <li class="big"><span class="when">1086</span><span class="what">The Domesday Book</span><span class="why">A survey of who owns what. Almost all the land now belongs to Normans.</span></li>
+    </ol>
+  </section>
+
+  <div class="tip">
+    <h2>Remember</h2>
+    <p><strong>Why William won:</strong> Harold’s army was tired from Stamford Bridge, the coast was unguarded when William landed, and William was a clever leader.</p>
+    <p><strong>How William kept control:</strong> castles, crushing rebellions and giving English land to Normans.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.bar button');
+  var phases=document.querySelectorAll('.phase');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      var f=b.getAttribute('data-f');
+      btns.forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false');});
+      phases.forEach(function(p){p.hidden = !(f==='all' || p.getAttribute('data-p')===f);});
+    });
+  });
+})();
+</script>
+
+</body></html>
